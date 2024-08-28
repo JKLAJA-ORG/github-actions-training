@@ -6,7 +6,7 @@ env:
 
 jobs:
   display-variables:
-    name: ${{ vars.ENVIRONMENT_VAR }}
+    name: TTTT
     runs-on: ubuntu-latest
     environment: test
     env:
