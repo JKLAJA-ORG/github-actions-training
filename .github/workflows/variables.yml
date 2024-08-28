@@ -6,14 +6,12 @@ env:
 
 jobs:
   display-variables:
-    name: "TEST: 123"
-    run-name: ${{ vars.ENVIRONMENT_VAR }}
     runs-on: ubuntu-latest
     environment: test
     env:
       JOB_VAR: "JOB 1 variable"
     steps:
-    - name: Use variables 1
+    - name: "Use variables 1: ${{ vars.ENVIRONMENT_VAR }}"
       env:
         STEP_VAR: "Step 1-1 var"
       run: |
