@@ -2,35 +2,46 @@ on:
   workflow_dispatch:
 env:
   cat_name: "Puszeks"
+  WORKFLOW_VAR: "WKF var"
 
 jobs:
   display-variables:
     name: ${{ vars.ENVIRONMENT_VAR }}
     runs-on: ubuntu-latest
     environment: test
+    env:
+      JOB_VAR: "JOB 1 variable"
     steps:
     - name: Use variables 1
+      env:
+        STEP_VAR: "Step 1-1 var"
       run: |
-        echo "Repository variable : $REPOSITORY_VAR"
-        echo "Organization variable : $ORGANIZATION_VAR"
-        echo "Environment variable : $ENVIRONMENT_VAR"
-        echo "Ala ma kota o nazwie ${{env.cat_name}}"
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR"
-        echo "Powinna być zmienna w scopie joba:$JOB_VAR"
-        echo "Powinna być zmienna w scopie stepu:$STEP_VAR"
+        echo "Repository variable : ${{ vars.REPOSITORY_VAR }}"
+        echo "Organization variable : ${{ vars.ORGANIZATION_VAR }}"
+        echo "Environment variable : ${{ vars.ENVIRONMENT_VAR }}"
+        echo "Ala ma kota o nazwie ${{ env.cat_name }}"
+        echo "Powinna być zmienna w scopie workflow: ${{ env.WORKFLOW_VAR }}"
+        echo "Powinna być zmienna w scopie joba: ${{ env.JOB_VAR }}"
+        echo "Powinna być zmienna w scopie stepu: ${{ env.STEP_VAR }}"
     
     - name: Use variables 1
+      env:
+        STEP_VAR: "Step 1-2 var"
       run: |
         echo "Ala ma kota o nazwie ${{env.cat_name}}"
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR"
-        echo "Powinna być zmienna w scopie joba:$JOB_VAR"
-        echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR"
+        echo "Powinna być zmienna w scopie workflow: ${{ env.WORKFLOW_VAR }}"
+        echo "Powinna być zmienna w scopie joba: ${{ env.JOB_VAR }}"
+        echo "NIE powinna być zmienna w scopie stepu: ${{ env.STEP_VAR }}"
 
   display-variables2:
     runs-on: ubuntu-latest
+    env:
+      JOB_VAR: "JOB 2 variable"
     steps:
     - name: Use variables in display-variables2
+      env:
+        STEP_VAR: "Step 2-1 var"
       run: |
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR"
-        echo "NIE powinna być zmienna w scopie joba:$JOB_VAR"
-        echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR"
+        echo "Powinna być zmienna w scopie workflow: ${{ env.WORKFLOW_VAR }}"
+        echo "NIE powinna być zmienna w scopie joba: ${{ env.JOB_VAR }}"
+        echo "NIE powinna być zmienna w scopie stepu: ${{ {{ env.STEP_VAR }}"
