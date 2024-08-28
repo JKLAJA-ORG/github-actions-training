@@ -37,14 +37,23 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > job_1-result.txt
+          expr 3 + 7 > math-result.txt
+      - name: store
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-result
+          path: math-result.txt
 
   job_2:
     name: Multiply by 9
     needs: job_1
     runs-on: windows-latest
     steps:
+      - name: Fetch math result from job_1
+        uses: actions/download-artifact@v4
+        with:
+          name: math-result
       - shell: bash
         run: |
-          value=`cat job_1-result.txt`
+          value=`cat math-result.txt`
           echo $(expr $value \* 9) 
