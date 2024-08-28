@@ -13,7 +13,7 @@ jobs:
         echo "Repository variable : $REPOSITORY_VAR"
         echo "Organization variable : $ORGANIZATION_VAR"
         echo "Environment variable : $ENVIRONMENT_VAR"
-        echo "Ala ma kota o nazwie ${env.cat_name}"
+        echo "Ala ma kota o nazwie ${{env.cat_name}}"
         echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR"
         echo "Powinna być zmienna w scopie joba:$JOB_VAR"
         echo "Powinna być zmienna w scopie stepu:$STEP_VAR"
