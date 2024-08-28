@@ -44,4 +44,4 @@ jobs:
       run: |
         echo "Powinna być zmienna w scopie workflow: ${{ env.WORKFLOW_VAR }}"
         echo "NIE powinna być zmienna w scopie joba: ${{ env.JOB_VAR }}"
-        echo "NIE powinna być zmienna w scopie stepu: ${{ {{ env.STEP_VAR }}"
+        echo "NIE powinna być zmienna w scopie stepu: ${{ env.STEP_VAR }}"
