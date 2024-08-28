@@ -6,7 +6,7 @@ env:
 
 jobs:
   display-variables:
-    name: "TEST: ${{ vars.ENVIRONMENT_VAR }}"
+    name: "TEST: ${{ vars.ORGANIZATION_VAR }}"
     runs-on: ubuntu-latest
     environment: test
     env:
