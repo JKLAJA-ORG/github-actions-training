@@ -4,11 +4,18 @@ on:
     inputs:
       logLevel:
         type: choice
-        description: "Log level"
+        description: "Select log level"
+        default: warning
         options:
         - info
         - warning
         - debug
+      tags:
+        description: "Provide tags"
+        type: string
+      environment:
+        description: "Select environment"
+        type: environment
         
 jobs:
   log-the-inputs:
